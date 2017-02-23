@@ -16,11 +16,12 @@
 
   <tbody>
     <% @my_thread.comments.each do |comment| %>
-      <tr>
+        <tr>
+            <%= p comment.my_thread_id %>
         <td><%= comment.name %></td>
         <td><%= comment.content %></td>
-        <td><%= link_to 'Edit', "/my_threads/#{@my_thread.id}/comments/#{comment.id}/edit" %></td>
-        <td><%= link_to 'Destroy', "/my_threads/#{@my_thread.id}/comments/#{comment.id}", method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Edit', edit_my_thread_comment_path(:my_thread_id => comment.my_thread_id, :id => comment.id) %></td>
+        <td><%= link_to 'Destroy', my_thread_comment_path(:my_thread_id => comment.my_thread_id, :id => comment.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
